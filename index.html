@@ -5,7 +5,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover"
     />
-    <title>>_-</title>
     <style>
       * {
         box-sizing: border-box;
@@ -207,38 +206,30 @@
       const col = 15;
       const changeInterval = 33;
       const updateCount = 2;
-      const characters = printUnicodeRange(0xac00, 0xd7a3);
       let spans = null;
-
-      function getRandomIntInclusive(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
 
       function logToBottom() {
         log.scrollTo(0, log.scrollHeight + 9999);
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        createInitialText();
         setInterval(updateRandomText, changeInterval);
       });
 
       sidbtn.addEventListener("click", async () => {
-        await FlareLane.setUserId(generateRandomCharacter());
+        await FlareLane.setUserId("testUserId");
         logToBottom();
       });
 
       stsbtn.addEventListener("click", async () => {
         await FlareLane.setTags({
-          "`m@~": generateRandomCharacter(),
+          "`m@~": "testTag",
         });
         logToBottom();
       });
 
       tebtn.addEventListener("click", async () => {
-        await FlareLane.trackEvent(generateRandomCharacter());
+        await FlareLane.trackEvent("testEvent");
         logToBottom();
       });
 
